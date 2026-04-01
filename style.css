@@ -241,7 +241,7 @@ body {
   border-radius: 12px;
   overflow: hidden;
   box-shadow: var(--shadow-lg);
-  border: 1px solid rgba(0,0,0,0.08);
+  border: 3px solid var(--dark);
 }
 
 .browser-bar {
@@ -272,7 +272,7 @@ body {
   max-width: 280px;
 }
 
-.browser-body { background: #1e1e2e; }
+.browser-body { background: #fff; }
 
 .code-editor {
   display: flex;
@@ -280,7 +280,7 @@ body {
 }
 
 .editor-sidebar {
-  background: #16162a;
+  background: #f8f9fa;
   width: 140px;
   padding: 1rem 0;
   flex-shrink: 0;
@@ -289,13 +289,13 @@ body {
 .file-item {
   padding: 0.4rem 1rem;
   font-size: 0.8rem;
-  color: #a0aec0;
+  color: var(--dark);
   cursor: pointer;
   transition: background 0.2s;
 }
 
 .file-item.active {
-  background: rgba(79,99,255,0.2);
+  background: var(--primary);
   color: #fff;
 }
 
@@ -305,14 +305,15 @@ body {
   font-family: 'Fira Code', 'Courier New', monospace;
   font-size: 0.85rem;
   line-height: 1.8;
+  color: var(--dark);
 }
 
 .code-line { white-space: pre; }
-.kw  { color: #c792ea; }
-.mod { color: #82aaff; }
-.fn  { color: #82aaff; }
-.dec { color: #c3e88d; }
-.str { color: #c3e88d; }
+.kw  { color: #9333ea; }
+.mod { color: #2563eb; }
+.fn  { color: #ea580c; }
+.dec { color: #16a34a; }
+.str { color: #16a34a; }
 
 .cursor {
   animation: blink 1s steps(1) infinite;
