@@ -337,21 +337,23 @@ body {
 
 .screen {
   flex: 1;
-  border-radius: 10px;
+  border-radius: 24px;
   overflow: hidden;
-  box-shadow: var(--shadow);
+  border: 3px solid var(--dark);
+  box-shadow: var(--shadow-lg);
 }
 
 .screen-right { flex: 1.4; }
 
 .screen-label {
-  background: rgba(0,0,0,0.7);
+  background: var(--dark);
   color: #fff;
-  font-size: 0.7rem;
-  font-weight: 600;
+  font-size: 1rem;
+  font-weight: 700;
   text-align: center;
-  padding: 0.3rem;
+  padding: 0.6rem;
   letter-spacing: 0.5px;
+  border-bottom: 3px solid var(--dark);
 }
 
 .screen-inner {
@@ -365,38 +367,44 @@ body {
 }
 
 .video-screen {
-  background: linear-gradient(135deg, #1e293b, #0f172a);
+  background: #FFD166;
 }
 
 .play-btn {
   width: 56px;
   height: 56px;
   border-radius: 50%;
-  background: rgba(79,99,255,0.9);
+  background: var(--primary);
   display: flex;
   align-items: center;
   justify-content: center;
   color: #fff;
   font-size: 1.4rem;
   margin-bottom: 1rem;
-  box-shadow: 0 0 0 8px rgba(79,99,255,0.2);
+  border: 3px solid var(--dark);
+  box-shadow: 4px 4px 0px var(--dark);
+  transition: transform 0.2s;
+}
+.play-btn:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px var(--dark);
 }
 
 .progress-bar-demo { width: 100%; }
-.progress-track { height: 4px; background: rgba(255,255,255,0.2); border-radius: 2px; }
-.progress-fill { height: 100%; width: 45%; background: var(--primary); border-radius: 2px; }
+.progress-track { height: 12px; background: #fff; border: 2px solid var(--dark); border-radius: 10px; overflow: hidden; }
+.progress-fill { height: 100%; width: 45%; background: var(--primary); border-right: 2px solid var(--dark); }
 
 .editor-screen {
-  background: #1e1e2e;
+  background: #fff;
   align-items: flex-start;
   justify-content: flex-start;
 }
 
-.mini-code { font-family: 'Fira Code', monospace; font-size: 0.75rem; line-height: 1.7; width: 100%; }
+.mini-code { font-family: 'Fira Code', monospace; font-size: 0.85rem; line-height: 1.7; width: 100%; font-weight: 600; color: var(--dark); }
 .mc-line { white-space: pre; }
-.mc-purple { color: #c792ea; }
-.mc-blue   { color: #82aaff; }
-.mc-green  { color: #c3e88d; }
+.mc-purple { color: #9D4EDD; }
+.mc-blue   { color: #0077B6; }
+.mc-green  { color: #2A9D8F; }
 
 .mini-feature-card {
   background: #fff;
