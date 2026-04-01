@@ -64,7 +64,8 @@ body {
 .hero {
   min-height: 100vh;
   position: relative;
-  background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 40%, #312e81 70%, #1e3a5f 100%);
+  background: var(--bg-light);
+  color: var(--dark);
   overflow: hidden;
 }
 
@@ -72,21 +73,19 @@ body {
   content: '';
   position: absolute;
   inset: 0;
-  background:
-    radial-gradient(ellipse 60% 50% at 70% 30%, rgba(79,99,255,0.25) 0%, transparent 70%),
-    radial-gradient(ellipse 40% 40% at 20% 70%, rgba(0,212,170,0.15) 0%, transparent 60%);
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23ffffff' fill-opacity='0.6' d='M0,160L48,176C96,192,192,224,288,213.3C384,203,480,149,576,138.7C672,128,768,160,864,186.7C960,213,1056,235,1152,218.7C1248,203,1344,149,1392,122.7L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E") bottom/cover no-repeat;
   pointer-events: none;
 }
 
 .hero-overlay {
   position: absolute;
   inset: 0;
-  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
   pointer-events: none;
 }
 
 .text-gradient {
-  background: linear-gradient(90deg, #818cf8, #38bdf8, #34d399);
+  background: linear-gradient(90deg, var(--primary), var(--accent));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -95,16 +94,17 @@ body {
 .fw-black { font-weight: 900; }
 
 .stat-card {
-  background: rgba(255,255,255,0.08);
-  border: 1px solid rgba(255,255,255,0.12);
-  backdrop-filter: blur(8px);
-  color: #fff;
+  background: #fff;
+  border: 2px solid var(--dark);
+  box-shadow: var(--shadow);
+  color: var(--dark);
   border-radius: 12px;
-  transition: background 0.3s;
+  transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .stat-card:hover {
-  background: rgba(255,255,255,0.14);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
 }
 
 .scroll-hint {
@@ -112,7 +112,7 @@ body {
   bottom: 2rem;
   left: 50%;
   transform: translateX(-50%);
-  color: rgba(255,255,255,0.5);
+  color: var(--dark);
   font-size: 1.4rem;
   animation: bounce 2s infinite;
 }
@@ -120,6 +120,55 @@ body {
 @keyframes bounce {
   0%, 100% { transform: translateX(-50%) translateY(0); }
   50% { transform: translateX(-50%) translateY(10px); }
+}
+
+/* =============================================
+   BUTTONS & BADGES (Neo-brutalism)
+   ============================================= */
+.btn-primary {
+  background-color: var(--primary);
+  border: 2px solid var(--dark);
+  color: #fff;
+  font-weight: 800;
+  box-shadow: 0 6px 0 var(--primary-dark);
+  transition: transform 0.1s, box-shadow 0.1s;
+}
+
+.btn-primary:hover {
+  background-color: var(--primary);
+  color: #fff;
+}
+
+.btn-primary:active {
+  transform: translateY(4px);
+  box-shadow: 0 2px 0 var(--primary-dark);
+}
+
+.btn-outline-dark {
+  background-color: #fff;
+  border: 2px solid var(--dark);
+  color: var(--dark);
+  font-weight: 800;
+  box-shadow: 0 6px 0 var(--dark);
+  transition: transform 0.1s, box-shadow 0.1s;
+}
+
+.btn-outline-dark:hover {
+  background-color: #f8f9fa;
+  color: var(--dark);
+}
+
+.btn-outline-dark:active {
+  transform: translateY(4px);
+  box-shadow: 0 2px 0 var(--dark);
+}
+
+.badge-vibrant {
+  background-color: #fed330;
+  color: var(--dark);
+  border: 2px solid var(--dark);
+  box-shadow: 2px 2px 0 var(--dark);
+  font-weight: 800;
 }
 
 /* =============================================
