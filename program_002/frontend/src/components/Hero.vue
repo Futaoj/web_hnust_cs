@@ -17,12 +17,13 @@
           <div
             class="d-flex flex-column flex-sm-row gap-3 justify-content-center"
           >
-            <a href="#lab" class="btn btn-primary btn-lg rounded-pill px-5">
+            <a href="#lab" class="btn btn-primary btn-lg rounded-pill px-5" @click.prevent="$emit('showInfo', '💖 提示：您已经成功点击，正在为您加载精彩内容！')">
               <i class="bi bi-play-circle-fill me-2"></i>立即体验
             </a>
             <a
               href="#features"
               class="btn btn-outline-dark btn-lg rounded-pill px-5"
+              @click.prevent="$emit('showInfo', '💖 提示：您已经成功点击，正在为您加载精彩内容！')"
             >
               了解更多 <i class="bi bi-arrow-right ms-1"></i>
             </a>
@@ -65,4 +66,5 @@
 </template>
 
 <script setup>
+defineEmits(['showInfo'])
 </script>

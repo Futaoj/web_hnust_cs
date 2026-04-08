@@ -28,6 +28,16 @@
               >立即开始</a
             >
           </li>
+          <li class="nav-item">
+            <button
+              v-if="!loggedInUser"
+              class="nav-link btn btn-login px-3 rounded-pill"
+              @click="$emit('openAuth')"
+            >登录 / 注册</button>
+            <span v-else class="nav-link nav-user">
+              <i class="bi bi-person-check-fill me-1"></i>{{ loggedInUser }}
+            </span>
+          </li>
         </ul>
       </div>
     </div>
@@ -35,4 +45,27 @@
 </template>
 
 <script setup>
+defineProps({ loggedInUser: String })
+defineEmits(['openAuth'])
 </script>
+
+<style scoped>
+.btn-login {
+  background: #ff6b6b;
+  color: #fff;
+  border: 2px solid #1e293b;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 3px 3px 0px #1e293b;
+  transition: transform 0.1s, box-shadow 0.1s;
+}
+.btn-login:hover {
+  transform: translate(1px, 1px);
+  box-shadow: 1px 1px 0px #1e293b;
+  color: #fff;
+}
+.nav-user {
+  font-weight: 700;
+  color: #ff6b6b;
+}
+</style>
