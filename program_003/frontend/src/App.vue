@@ -2,6 +2,7 @@
   <Header
     :loggedInUser="loggedInUser"
     @openAuth="showAuth = true"
+    @logout="handleLogout"
   />
   <Hero @showInfo="openInfo" />
   <Lab />
@@ -45,6 +46,23 @@ function openInfo(msg) {
 
 function handleLogin(username) {
   loggedInUser.value = username
+}
+
+async function handleLogout() {
+  try {
+    const res = await fetch('/api/logout', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      credentials: 'include'
+    })
+    const data = await res.json()
+    if (data.success) {
+      loggedInUser.value = ''
+      openInfo('您已成功登出。')
+    }
+  } catch (err) {
+    console.error('Logout failed:', err)
+  }
 }
 
 onMounted(() => {

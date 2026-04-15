@@ -11,7 +11,7 @@ public interface UserService {
      * 注册新用户
      * @return true 注册成功；false 用户名已存在
      */
-    boolean register(String username, String password);
+    boolean register(String username, String password, String email, String phone);
 
     /**
      * 验证用户登录

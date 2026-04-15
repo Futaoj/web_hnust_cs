@@ -14,12 +14,14 @@
         <id column="id"         property="id"/>
         <result column="username"   property="username"/>
         <result column="password"   property="password"/>
+        <result column="email"      property="email"/>
+        <result column="phone"      property="phone"/>
         <result column="created_at" property="createdAt"/>
     </resultMap>
 
     <!-- 根据用户名查询用户 -->
     <select id="findByUsername" parameterType="String" resultMap="UserResultMap">
-        SELECT id, username, password, created_at
+        SELECT id, username, password, email, phone, created_at
         FROM users
         WHERE username = #{username}
         LIMIT 1
@@ -27,8 +29,8 @@
 
     <!-- 插入新用户 -->
     <insert id="insert" parameterType="User" useGeneratedKeys="true" keyProperty="id">
-        INSERT INTO users (username, password)
-        VALUES (#{username}, #{password})
+        INSERT INTO users (username, password, email, phone)
+        VALUES (#{username}, #{password}, #{email}, #{phone})
     </insert>
 
 </mapper>

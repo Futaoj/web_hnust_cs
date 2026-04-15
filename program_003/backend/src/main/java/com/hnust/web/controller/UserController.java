@@ -142,13 +142,16 @@ public class UserController {
 
         String username = body.get("username");
         String password = body.get("password");
+        String email = body.get("email");
+        String phone = body.get("phone");
+        
         if (username == null || username.isBlank() || password == null || password.isBlank()) {
             result.put("success", false);
             result.put("message", "Username and password are required");
             return ResponseEntity.badRequest().body(result);
         }
 
-        boolean success = userService.register(username, password);
+        boolean success = userService.register(username, password, email, phone);
         if (success) {
             result.put("success", true);
             result.put("message", "Registration successful");
@@ -158,6 +161,15 @@ public class UserController {
         result.put("success", false);
         result.put("message", "Username already exists");
         return ResponseEntity.badRequest().body(result);
+    }
+
+    @PostMapping("/logout")
+    public ResponseEntity<Map<String, Object>> logout(HttpSession session) {
+        session.invalidate();
+        Map<String, Object> result = new HashMap<>();
+        result.put("success", true);
+        result.put("message", "Logout successful");
+        return ResponseEntity.ok(result);
     }
 
     // ---- private helper ----

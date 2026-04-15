@@ -20,6 +20,18 @@
             <label>密码</label>
             <input v-model="password" type="password" placeholder="请输入密码" required />
           </div>
+          
+          <template v-if="mode === 'register'">
+            <div class="field">
+              <label>邮箱</label>
+              <input v-model="email" type="email" placeholder="请输入邮箱地址" required />
+            </div>
+            <div class="field">
+              <label>手机号</label>
+              <input v-model="phone" type="tel" placeholder="请输入手机号码" required />
+            </div>
+          </template>
+
           <div class="field">
             <label>验证码</label>
             <div class="captcha-row">
@@ -63,6 +75,8 @@ const emit = defineEmits(['close', 'loginSuccess'])
 const mode = ref('login')
 const username = ref('')
 const password = ref('')
+const email = ref('')
+const phone = ref('')
 const captchaInput = ref('')
 const captchaUrl = ref('')
 const captchaShake = ref(false)
@@ -88,6 +102,8 @@ watch(() => props.isVisible, (val) => {
     successMsg.value = ''
     username.value = ''
     password.value = ''
+    email.value = ''
+    phone.value = ''
     captchaInput.value = ''
   }
 })
@@ -114,6 +130,8 @@ async function handleSubmit() {
       body: JSON.stringify({
         username: username.value,
         password: password.value,
+        email: email.value,
+        phone: phone.value,
         captcha: captchaInput.value,
       }),
     })
