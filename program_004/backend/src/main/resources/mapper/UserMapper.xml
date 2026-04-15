@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--
+    MyBatis 映射文件
+    namespace 必须与 DAO 接口的全限定名一致
+-->
+<mapper namespace="com.hnust.web.mapper.UserMapper">
+
+    <!-- 结果映射：数据库列名 → Java 字段名 -->
+    <resultMap id="UserResultMap" type="User">
+        <id column="id"         property="id"/>
+        <result column="username"   property="username"/>
+        <result column="password"   property="password"/>
+        <result column="email"      property="email"/>
+        <result column="phone"      property="phone"/>
+        <result column="created_at" property="createdAt"/>
+    </resultMap>
+
+    <!-- 根据用户名查询用户 -->
+    <select id="findByUsername" parameterType="String" resultMap="UserResultMap">
+        SELECT id, username, password, email, phone, created_at
+        FROM users
+        WHERE username = #{username}
+        LIMIT 1
+    </select>
+
+    <!-- 插入新用户 -->
+    <insert id="insert" parameterType="User" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO users (username, password, email, phone)
+        VALUES (#{username}, #{password}, #{email}, #{phone})
+    </insert>
+
+</mapper>
